@@ -1,0 +1,69 @@
+<div class="container">
+    <header>
+        <div class="container">
+            <h5>Welcome : {{loggedUser}}</h5>
+            <h3>Reports</h3>
+        </div>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" routerLink="/reports">Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" routerLink="/plan">Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" (click)="logOut()">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="row">
+        <input type="text" [(ngModel)]="filter" class="form-control" placeholder="Searach text Here" />
+        <h5 class="card-title">Repot1</h5>
+        <div class="card"
+            *ngFor="let plan of reportService.report1 | filter:filter| paginate:{itemsPerPage:5,currentPage:page}">
+            <h5 class="card-header">{{plan.Name}}</h5>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Days</th>
+                        <th>Transport Mode</th>
+                        <th>Price</th>
+                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>{{plan.Period}}</td>
+                            <td>{{plan.Mode}}</td>
+                            <td>{{plan.Price}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <p class="card-text">{{report1.Name}}</p> -->
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    <div class="row">
+        <input type="text" [(ngModel)]="filter" class="form-control" placeholder="Searach text Here" />
+        <h5 class="card-title">Repot2 - Plan Duration Less Than Or Equal To 2 Days</h5>
+        <div class="card"
+            *ngFor="let plan of reportService.report2 | filter:filter| paginate:{itemsPerPage:5,currentPage:page}">
+            <!-- <h5 class="card-header">{{plan.PlanName}}--------{{plan.Duration}}</h5> -->
+            <table>
+                <tr>
+                    <th>Plan Name - {{plan.PlanName}}</th>
+                    <th>Duration - {{plan.Duration}}</th>
+                </tr>
+            </table>
+            <div class="card-body">
+                <!-- <p class="card-text">{{report1.Name}}</p> -->
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+</div>

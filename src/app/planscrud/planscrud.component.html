@@ -1,0 +1,70 @@
+<div class="container" style="background-color: #1D2C4F;color: aliceblue;">
+    <header>
+        <div class="container">
+            <h5>Welcome : {{loggedUser}}</h5>
+        </div>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" routerLink="/reports">Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" routerLink="/plan">Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" (click)="logOut()">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+        <form name="planform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+
+            <!--Post ID --hidden-->
+            <input type="hidden" name="planId" [(ngModel)]="planService.planData.plid">
+
+            <div class="row">
+                <!--Plan name-->
+                <div class="form-group">
+                    <label>Plan Name:
+                    </label>
+                    <input type="text" name="Plname" #Name="ngModel" [(ngModel)]="planService.planData.Plname"
+                        class="form-control" placeholder="Post Content" required="required" minlength="5" maxlength="25"
+                        [ngClass]="{'is-invalid': Name.touched && Name.invalid}">
+
+                    <!--validation-->
+                    <div class="validation-error text-danger" *ngIf="Name.touched && Name.invalid ">
+                        <div *ngIf="Name.errors.required">
+                            Name Required
+                        </div>
+                    </div>
+
+                </div>
+                <!--Destination dropdwn-->
+                <div class="form-group">
+                    <label>Destination:
+                    </label>
+                    <select style="color: black;" name="Did" id="Did" #Did="ngModel" class="form-control"
+                        [(ngModel)]="planService.planData.Did">
+                        <option value="0" style="color: black;" disabled="disabled">Select Destination</option>
+                        <option *ngFor="let Dest of planService.destination" value="{{Dest.Did}}">{{Dest.Dname}}
+                        </option>
+                    </select>
+
+                    <!--validation-->
+                    <div class="validation-error text-danger" *ngIf="Did.touched && Did.invalid ">
+                        <div *ngIf="Did.errors.required">
+                            Destination is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+                <button type="submit" [disabled]="!(form.valid && form.dirty)"
+                    class="btn btn-lg btn-primary form-control">Submit</button>
+            </div>
+        </form>
+
+</div>

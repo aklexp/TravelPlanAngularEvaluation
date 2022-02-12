@@ -1,0 +1,54 @@
+
+         .login-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            max-height: 100%;
+            background-color: #1D2C4F;
+            background-size: cover;
+            background-blend-mode: hard-light;
+          }
+          .bg-login {
+            background-image: linear-gradient(#1D2C4F, rgba(255, 233, 44, 0.3));
+          }
+        
+          .login-panel h2 {
+              position: absolute;
+              top: 0;
+              left: 25%;
+              z-index: 999;
+              margin-top: -25px;
+              width: 50%;
+              padding: 10px;
+              color: #1D2C4F;
+              background-color: rgba(255, 233, 44, 0.8);
+              text-transform: uppercase;
+              font-size: 25px;
+              border-radius: 4px;
+          }
+          .login-panel .form-group input.form-control {
+            background-color: #4E5875;
+            color: #aaa;
+            transition: all ease-in-out 333ms;
+          }
+          .login-panel .form-group input.form-control:focus {
+            background-color: rgba(255, 233, 44, 0.2);
+          }
+          .login-panel label {
+            color: #fff;
+            font-size: 0.9rem;
+          }
+        
+          .login-panel button.btn {
+            background-color: rgba(255, 233, 44, 0.8);
+            color: #1D2C4F;
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all ease-in-out 333ms;
+          }
+          .login-panel button.btn:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+          }
